@@ -34,7 +34,7 @@ This is a nuspec. It mostly adheres to https://docs.nuget.org/create/Nuspec-Refe
 
     <!-- == SOFTWARE SPECIFIC SECTION == -->
     <!-- This section is about the software itself -->
-    <title>diff-pdf (Install)</title>
+    <title>diff-pdf (Portable)</title>
     <authors>Vaclav Slavik</authors>
     <!-- projectUrl is required for the community feed -->
     <projectUrl>https://vslavik.github.io/diff-pdf/</projectUrl>
