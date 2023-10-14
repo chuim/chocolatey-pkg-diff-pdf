@@ -4,8 +4,8 @@ $toolsDir   = "$(Split-Path -parent $MyInvocation.MyCommand.Definition)"
 $packageArgs = @{
   packageName   = $env:ChocolateyPackageName
   unzipLocation = $toolsDir
-  url           = 'https://github.com/vslavik/diff-pdf/releases/download/v0.5/diff-pdf-win-0.5.zip'
-  checksum      = 'b93b6f9b60f208b307b969dbdc22401275424f77e08edbafc33dd51bb5d556a2'
+  url           = 'https://github.com/vslavik/diff-pdf/releases/download/v0.5.1/diff-pdf-win-0.5.1.zip'
+  checksum      = '996bd1c10162846109c01a1af924d7229c0ea315407f97674daafb3c97931e06'
   checksumType  = 'sha256'
 }
 
