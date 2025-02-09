@@ -13,12 +13,14 @@ the needed latest release URL and version number.
 1. Run `choco pack` to create/update the `*.nupkg` file for the new version. 
 1. Run `choco install diff-pdf --debug --verbose --source .` to test installing
    the new version.
-   * You may need a shell with elevated privileges for this step.
-   * If diff-pdf is already installed, add the `-f` option to force a reinstall
-     or `choco upgrade...` instead with the same arguments.
-1. If everything worked, push the new package:
+   * You may need a shell with elevated privileges for this step or prefix the
+     command line above with the newly added `sudo` command.
+   * If diff-pdf is already installed, add the `--force` option to force a
+     reinstall or `choco upgrade...` instead with the same arguments.
+   * If needed, also specify a specific version number with `--version`.
+1. If everything worked, push the new package to Chocolatey:
    `choco push <new-package.nupkg> --source https://push.chocolatey.org/`
-1. Commit and push changes and additions to the package repository.
+1. Commit and push changes and additions to the GitHub package repository.
 
 References:
 * https://docs.chocolatey.org/en-us/create/create-packages
