@@ -17,7 +17,7 @@ jobs:
           fetch-depth: 0
 
       - name: Run Chocolatey-AU Action
-        uses: chocolatey-community/chocolatey-au-action@v2
+        uses: chocolatey-community/chocolatey-au-action@3.0
         with:
           package-paths: diff-pdf
           push: true
