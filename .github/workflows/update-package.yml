@@ -19,7 +19,7 @@ jobs:
       - name: Run Chocolatey-AU Action
         uses: chocolatey-community/chocolatey-au-action@3.0
         with:
-          package-paths: diff-pdf
+          package-paths: diff-pdf*
           push: true
           api-key: ${{ secrets.CHOCO_API_KEY }}
           commit-changes: true
