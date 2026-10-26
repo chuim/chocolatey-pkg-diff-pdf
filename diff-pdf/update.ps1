@@ -41,5 +41,9 @@ function global:au_SearchReplace {
     }
 }
 
-Update-Package -ChecksumFor 64
+$package = Update-Package -ChecksumFor 64
+if ($package -and $package.Updated) {
+    $package.NuspecVersion = $package.RemoteVersion
+}
+return $package
 
