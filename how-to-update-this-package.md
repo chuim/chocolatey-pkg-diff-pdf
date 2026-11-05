@@ -35,6 +35,10 @@ The package checks for updates automatically every day via GitHub Actions.
 4. **Trigger Manually**:
    - Go to the **Actions** tab on GitHub, select **Auto Update Package**, and click **Run workflow**.
 
+### Keeping the Schedule Running
+
+GitHub disables scheduled workflows in public repositories after 60 days without repository activity, and diff-pdf releases can be further apart than that. If it happens, re-enable the workflow from the **Actions** tab, then run it once to pick up any release it missed.
+
 ## Local Testing and Usage
 
 ### Prerequisites
@@ -43,27 +47,20 @@ Install the `Chocolatey-AU` module (if not already installed):
 Install-Module -Name Chocolatey-AU -Scope CurrentUser
 ```
 
-### Dry Run (Test without modifying files)
-To check if a newer upstream version is available without modifying files:
+### Run a Local Update
+Run these in Windows PowerShell. Nothing gets pushed.
 ```powershell
-.\update.ps1 -WhatIf
-```
-
-### Force an Update Test
-To simulate/force the entire update flow (downloads upstream asset, computes SHA256 checksum, updates install script, and creates the `.nupkg`) in dry-run mode:
-```powershell
-.\update.ps1 -Force -WhatIf
-```
-
-### Run an Actual Local Update
-To perform an update locally:
-```powershell
-.\update.ps1
+.\update.ps1          # Update the package files and build the nupkg, if there's a new release
+.\update.ps1 -Force   # Same, even if there's no new release
 ```
 If an update is found:
 1. `diff-pdf\diff-pdf.nuspec` is updated with the new version.
 2. `diff-pdf\tools\chocolateyinstall.ps1` is updated with the new URL and SHA256 checksum.
 3. The new `diff-pdf.<version>.nupkg` is built in `diff-pdf\`.
+
+With `-Force` and no new release, the version gets a date suffix (for example `0.5.3.20261104`).
+
+To undo the changes to the package files, run `git restore .`.
 
 ### Test Installing the Generated Package Locally
 ```powershell

@@ -11,6 +11,18 @@ jobs:
     permissions:
       contents: write
     steps:
+      # Without a key the AU action only warns and skips the push, but still commits the
+      # version bump. Later runs would then find nothing to do and the release would
+      # never reach Chocolatey, so stop here instead.
+      - name: Check for Chocolatey API key
+        env:
+          CHOCO_API_KEY: ${{ secrets.CHOCO_API_KEY }}
+        run: |
+          if (-not $env:CHOCO_API_KEY) {
+            Write-Output '::error::The CHOCO_API_KEY repository secret is not set.'
+            exit 1
+          }
+
       - name: Checkout repository
         uses: actions/checkout@v5
         with:
