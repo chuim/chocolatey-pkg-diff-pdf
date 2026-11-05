@@ -1,13 +1,11 @@
 [CmdletBinding()]
 param(
-    [switch]$Force,
-    [switch]$WhatIf
+    [switch]$Force
 )
 
 Set-Location $PSScriptRoot
 
 if ($Force) { $global:au_Force = $true }
-if ($WhatIf) { $global:au_WhatIf = $true }
 
 Import-Module Chocolatey-AU
 

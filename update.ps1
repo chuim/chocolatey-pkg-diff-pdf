@@ -1,7 +1,6 @@
 [CmdletBinding()]
 param(
-    [switch]$Force,
-    [switch]$WhatIf
+    [switch]$Force
 )
 
 Push-Location "$PSScriptRoot\diff-pdf"
